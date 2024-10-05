@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Youtube = () => {
-    const [search, setSearch] = useState('');
+const Youtube = ({search}) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [length, setLength] = useState(null);
@@ -30,14 +29,9 @@ const Youtube = () => {
         <>
             <div>
                 <input
-                    type='text'
-                    placeholder='Search'
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <input
                     type='number'
                     placeholder='No limit'
-                    onChange={(e) => setLength(Number(e.target.value))} // Convert to number
+                    onChange={(e) => setLength(Number(e.target.value))}
                 />
                 {error && <p>Error: {error}</p>}
                 {data && (
