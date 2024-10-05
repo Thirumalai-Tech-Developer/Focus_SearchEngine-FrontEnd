@@ -7,7 +7,7 @@ const Youtube = () => {
 
     useEffect(() => {
         if (search) {
-            fetch(`http://localhost:3000/youtube?search=${search}`)
+            fetch(`http://localhost:5000/youtube?search=${search}`)
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error('Network response was not ok');
@@ -16,9 +16,11 @@ const Youtube = () => {
                 })
                 .then((data) => {
                     setData(data);
+                    setError(null); 
                 })
                 .catch((err) => {
                     setError(err.message);
+                    setData(null);
                 });
         }
     }, [search]);
@@ -35,7 +37,9 @@ const Youtube = () => {
                 {data && (
                     <ul>
                         {data.map((item) => (
-                            <li key={item.key}>{item.title}</li>
+                            <li key={item.key}>
+                                <a href={item.link} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                            </li>
                         ))}
                     </ul>
                 )}
