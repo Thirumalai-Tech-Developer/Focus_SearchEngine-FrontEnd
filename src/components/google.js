@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Google = (search) => {
+const Google = ({ search }) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
@@ -14,8 +14,13 @@ const Google = (search) => {
                     return res.json();
                 })
                 .then((data) => {
-                    setData(data);
-                    setError(null); 
+                    console.log('Google API response:', data); // Log the response
+                    if (Array.isArray(data)) {
+                        setData(data);
+                    } else {
+                        setError("Unexpected response format");
+                    }
+                    setError(null);
                 })
                 .catch((err) => {
                     setError(err.message);
@@ -29,17 +34,19 @@ const Google = (search) => {
             <div>
                 {error && <p>Error: {error}</p>}
                 {data && (
-                    <div>
-                        {data.map((item) => (
-                            <li>
-                            <a key={item.key} href={item.link}>
-                                {item.title}
-                            </a></li>
+                    <ul>
+                        {data.map((item, index) => (
+                            <li key={index}>
+                                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                                    {item.title || 'No Title Found'} {/* Add fallback text */}
+                                </a>
+                            </li>
                         ))}
-                    </div>
+                    </ul>
                 )}
             </div>
         </>
     );
 };
-export default Google
+
+export default Google;

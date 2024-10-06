@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-const Youtube = ({search}) => {
+const Youtube = ({ search }) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
-    const [length, setLength] = useState(null);
-
+    const [length, setLength] = useState(2);
     useEffect(() => {
         if (search) {
             fetch(`http://localhost:5000/youtube?search=${search}&maxResults=${length}`)
@@ -31,6 +30,7 @@ const Youtube = ({search}) => {
                 <input
                     type='number'
                     placeholder='No limit'
+                    defaultValue={2}
                     onChange={(e) => setLength(Number(e.target.value))}
                 />
                 {error && <p>Error: {error}</p>}
