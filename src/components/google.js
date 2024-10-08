@@ -31,14 +31,14 @@ const Google = ({ search }) => {
 
     return (
         <>
-            <div>
+            <div className='flex justify-center gap-11'>
                 {error && <p>Error: {error}</p>}
                 {data && (
                     <ul>
                         {data.map((item, index) => (
                             <li key={index}>
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    {item.title || 'No Title Found'} {/* Add fallback text */}
+                                    {item.title || 'No Title Found'}
                                 </a>
                             </li>
                         ))}
