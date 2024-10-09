@@ -6,7 +6,7 @@ const Google = ({ search }) => {
 
     useEffect(() => {
         if (search) {
-            fetch(`http://localhost:5000/google?search=${search}`)
+            fetch(`https://frontendsearchengine.onrender.com/google?search=${search}`)
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error('Network response was not ok');

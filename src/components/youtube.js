@@ -13,7 +13,7 @@ const Youtube = ({ search, length }) => {
 
   useEffect(() => {
     if (search && length) {
-      fetch(`http://localhost:5000/youtube?search=${search}&maxResults=${length}`)
+      fetch(`https://frontendsearchengine.onrender.com/youtube?search=${search}&maxResults=${length}`)
         .then((res) => res.json())
         .then((data) => {
           setData(data);
