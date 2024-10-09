@@ -35,14 +35,24 @@ const Google = ({ search }) => {
                 {error && <p>Error: {error}</p>}
                 {data && (
                     <ul>
-                        {data.map((item, index) => (
-                            <li key={index}>
-                                <a href={item.link} target="_blank" rel="noopener noreferrer">
-                                    {item.title || 'No Title Found'}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
+                    {data.map((item, index) => (
+                        <li 
+                            key={index}
+                            style={{ listStyleType: 'none', marginBottom: '8px' }}
+                        >
+                            <a 
+                                href={item.link} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                style={{ textDecoration: 'none', color: 'white' }}
+                                onMouseOver={(e) => e.currentTarget.style.color = 'orange'}
+                                onMouseOut={(e) => e.currentTarget.style.color = 'white'}
+                            >
+                                {item.title || 'No Title Found'}
+                            </a>
+                        </li>
+                    ))}
+                </ul>                
                 )}
             </div>
         </>

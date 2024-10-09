@@ -52,23 +52,30 @@ function App() {
                     value={videoLimit}
                     onChange={handleLimitChange}
                     className="border border-gray-300 rounded-md p-1 w-20"
-                    placeholder="Limit"
+                    placeholder="Video"
                 />
-                <label className="text-green-300 p-2">YouTube Video Limit</label>
             </div>
             
             {/* Main content container */}
             <div className="bg-black h-[85vh] rounded-3xl bg-opacity-35 mx-4 md:mx-10 lg:mx-20 mt-20 flex flex-col"> {/* Increased top margin */}
-                <div className="flex-1 overflow-y-auto p-6">
+
+            <h1 style={{ fontSize: '36px', color: 'White', textAlign: 'center' }}>Youtube Video</h1>
+                <div className="flex-1 overflow-y-auto p-6 bg-black bg-opacity-20">
                     {search && (
                         <div className="h-auto">
                             <Youtube search={search} length={videoLimit} />
                         </div>
                     )}
                 </div>
-                <div className="flex-1 gap-5 overflow-y-auto p-6 text-white">
+
+                <h1 style={{ fontSize: '36px', color: 'White', textAlign: 'center' }}>Articles</h1>
+
+
+                <div className="flex-1 gap-5 overflow-y-auto p-6 bg-black bg-opacity-20 rounded-xl"
+                    style={{color: 'white'}}
+                >
                     {search && (
-                        <div className="h-auto items-center">
+                        <div className="h-auto items-center ">
                             <Google search={search} />
                         </div>
                     )}
