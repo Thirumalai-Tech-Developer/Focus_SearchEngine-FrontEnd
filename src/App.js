@@ -6,7 +6,6 @@ import './index.css';
 
 function App() {
     const [search, setSearch] = useState('');
-    const [videoLimit, setVideoLimit] = useState(2);  // State to control video limit
     const searchInputRef = useRef(null);
 
     const handleSearch = () => {
@@ -19,10 +18,6 @@ function App() {
         if (e.key === 'Enter') {
             handleSearch();
         }
-    };
-
-    const handleLimitChange = (e) => {
-        setVideoLimit(Number(e.target.value));
     };
 
     return (
@@ -44,17 +39,6 @@ function App() {
                     Search
                 </button>
             </div>
-
-            {/* Video limit input section */}
-            <div className="absolute top-5 left-5 flex mb-4 z-10">
-                <input
-                    type="number"
-                    value={videoLimit}
-                    onChange={handleLimitChange}
-                    className="border border-gray-300 rounded-md p-1 w-20"
-                    placeholder="Video"
-                />
-            </div>
             
             {/* Main content container */}
             <div className="bg-black h-[85vh] rounded-3xl bg-opacity-35 mx-4 md:mx-10 lg:mx-20 mt-20 flex flex-col"> {/* Increased top margin */}
@@ -63,7 +47,7 @@ function App() {
                 <div className="flex-1 overflow-y-auto p-6 bg-black bg-opacity-20">
                     {search && (
                         <div className="h-auto">
-                            <Youtube search={search} length={videoLimit} />
+                            <Youtube search={search} length={10} />
                         </div>
                     )}
                 </div>
